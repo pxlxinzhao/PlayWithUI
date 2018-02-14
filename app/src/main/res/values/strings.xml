@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PlayWithUi</string>
+
+    <string name="hello_blank_fragment">This must be a joke</string>
+</resources>
