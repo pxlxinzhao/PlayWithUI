@@ -23,20 +23,53 @@
         app:layout_constraintBottom_toTopOf="@+id/main_frag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <fragment
         android:id="@+id/main_frag"
-        android:tag="main_frag"
         android:name="com.patrickpu.test.playwithui.MainFrag"
         android:layout_width="307dp"
         android:layout_height="328dp"
-        android:layout_marginBottom="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:tag="main_frag"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/goSimple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:text="simple"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/goPinkBtn"
+        app:layout_constraintEnd_toStartOf="@+id/goContact"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.563" />
+
+    <Button
+        android:id="@+id/goContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Contacts"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/goSimple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/goSimple"
+        app:layout_constraintTop_toTopOf="@+id/goSimple"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
