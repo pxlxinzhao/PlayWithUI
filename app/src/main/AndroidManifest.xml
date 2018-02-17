@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".List" />
         <activity android:name=".SimpleListActivity" />
-        <activity android:name=".ContactListActivity"></activity>
+        <activity android:name=".ContactListActivity" />
+        <activity android:name=".LoggingActivity"></activity>
     </application>
 
 </manifest>

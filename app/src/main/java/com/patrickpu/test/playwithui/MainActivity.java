@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class MainActivity extends AppCompatActivity implements SecondFragment.OnFragmentInteractionListener{
+public class MainActivity extends LoggingActivity implements SecondFragment.OnFragmentInteractionListener{
 
     String FRAG_TAG = "main_frag";
     String FRAG_INDEX = "frag_index";
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements SecondFragment.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
