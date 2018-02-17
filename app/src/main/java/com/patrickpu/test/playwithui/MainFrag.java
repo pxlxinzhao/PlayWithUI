@@ -21,4 +21,5 @@ public class MainFrag extends Fragment implements MainActivity.MainFragBase{
     public void changeColor(boolean isDark) {
         ((TextView)getView().findViewById(R.id.textToPink)).setTextColor(getResources().getColor(isDark ? R.color.colorDark : R.color.colorPink));
     }
+
 }
