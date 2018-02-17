@@ -16,6 +16,8 @@ import android.widget.ToggleButton;
 public class MainActivity extends AppCompatActivity implements SecondFragment.OnFragmentInteractionListener{
 
     String FRAG_TAG = "main_frag";
+    String FRAG_INDEX = "frag_index";
+    int fragIndex = 2;
     Fragment currentFragment = null;
     ToggleButton tb;
     Button simpleBtn, contactBtn;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements SecondFragment.On
             @Override
             public void onClick(View view) {
                 Log.v(FRAG_TAG, String.valueOf(tb.isChecked()));
-                if (currentFragment instanceof MainFrag){
+                if (fragIndex == 1){
                     ((MainFrag) currentFragment).changeColor(!tb.isChecked());
                 }
             }
@@ -53,29 +55,31 @@ public class MainActivity extends AppCompatActivity implements SecondFragment.On
             }
         });
 
-        MainFrag mainFrag = new MainFrag();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.frag_container, mainFrag);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        swapFragment();
     }
 
+    //called by change fragment button
     public void changeFragment(View view){
-        Log.v(FRAG_TAG, "function gets called");
-//        Toast.makeText(this, "OMG", Toast.LENGTH_SHORT).show();
+        swapFragment();
+    }
 
+    private void swapFragment(){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        if (currentFragment instanceof MainFrag){
+        if (fragIndex == 1){
             SecondFragment secondFragment = SecondFragment.newInstance("patrick", "pu");
             fragmentTransaction.replace(R.id.frag_container, secondFragment);
-        }else if(currentFragment instanceof SecondFragment){
+            fragIndex = 2;
+        }else if(fragIndex == 2){
             MainFrag mainFrag = new MainFrag();
             fragmentTransaction.replace(R.id.frag_container, mainFrag);
+            fragIndex = 1;
         }
+
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
 
     @Override
     public void onAttachFragment(Fragment fragment) {
@@ -91,5 +95,23 @@ public class MainActivity extends AppCompatActivity implements SecondFragment.On
 
     public interface MainFragBase{
         void changeColor(boolean isDark);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(FRAG_INDEX, fragIndex);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        fragIndex = 3 - savedInstanceState.getInt(FRAG_INDEX);
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onPostResume() {
+        swapFragment();
+        super.onPostResume();
     }
 }
